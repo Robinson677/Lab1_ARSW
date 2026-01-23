@@ -12,6 +12,25 @@
 ### Descripción
   Este ejercicio contiene una introducción a la programación con hilos en Java, además de la aplicación a un caso concreto.
   
+=======
+---
+
+### Descripción
+  Este ejercicio contiene una introducción a la programación con hilos en Java, además de la aplicación a un caso concreto.
+---
+
+## 👤 Developers
+* Juan Pablo Caballero
+* Robinson Steven Nuñez
+
+---
+
+## 📑 Content Table
+1. [Parte I - Introducción a Hilos en Java](#-Parte-I-hilos)
+2. [Parte II - Ejercicio Black List Search](#-Parte-II-hilos)
+
+---
+>>>>>>> feature/Parte1Hilos
 
 **Parte I - Introducción a Hilos en Java**
 
@@ -24,14 +43,25 @@
 
 **Parte II - Ejercicio Black List Search**
 
+=======
+---
+
+**Parte II - Ejercicio Black List Search**
+>>>>>>> feature/Parte1Hilos
 
 Para un software de vigilancia automática de seguridad informática se está desarrollando un componente encargado de validar las direcciones IP en varios miles de listas negras (de host maliciosos) conocidas, y reportar aquellas que existan en al menos cinco de dichas listas. 
 
 Dicho componente está diseñado de acuerdo con el siguiente diagrama, donde:
 
+
 - HostBlackListsDataSourceFacade es una clase que ofrece una 'fachada' para realizar consultas en cualquiera de las N listas negras registradas (método 'isInBlacklistServer'), y que permite también hacer un reporte a una base de datos local de cuando una dirección IP se considera peligrosa. Esta clase NO ES MODIFICABLE, pero se sabe que es 'Thread-Safe'.
 
 - HostBlackListsValidator es una clase que ofrece el método 'checkHost', el cual, a través de la clase 'HostBlackListDataSourceFacade', valida en cada una de las listas negras un host determinado. En dicho método está considerada la política de que al encontrarse un HOST en al menos cinco listas negras, el mismo será registrado como 'no confiable', o como 'confiable' en caso contrario. Adicionalmente, retornará la lista de los números de las 'listas negras' en donde se encontró registrado el HOST.
+
+* HostBlackListsDataSourceFacade es una clase que ofrece una 'fachada' para realizar consultas en cualquiera de las N listas negras registradas (método 'isInBlacklistServer'), y que permite también hacer un reporte a una base de datos local de cuando una dirección IP se considera peligrosa. Esta clase NO ES MODIFICABLE, pero se sabe que es 'Thread-Safe'.
+
+* HostBlackListsValidator es una clase que ofrece el método 'checkHost', el cual, a través de la clase 'HostBlackListDataSourceFacade', valida en cada una de las listas negras un host determinado. En dicho método está considerada la política de que al encontrarse un HOST en al menos cinco listas negras, el mismo será registrado como 'no confiable', o como 'confiable' en caso contrario. Adicionalmente, retornará la lista de los números de las 'listas negras' en donde se encontró registrado el HOST.
+
 
 ![](img/Model.png)
 
@@ -85,5 +115,32 @@ Con lo anterior, y con los tiempos de ejecución dados, haga una gráfica de tie
 
 3. De acuerdo con lo anterior, si para este problema en lugar de 100 hilos en una sola CPU se pudiera usar 1 hilo en cada una de 100 máquinas hipotéticas, la ley de Amdahls se aplicaría mejor?. Si en lugar de esto se usaran c hilos en 100/c máquinas distribuidas (siendo c es el número de núcleos de dichas máquinas), se mejoraría?. Explique su respuesta.
 
+<<<<<<< HEAD
 
 
+=======
+---
+
+# 🏷️ Naming Conventions
+## 🌿 Branch Naming
+### ✨ Feature Branches
+Used for new features or non-critical improvements.
+**Format:**
+`feature/[shortDescription]`
+**Examples:**
+- `feature/authenticationModule`
+- `feature/securityService`
+
+**Rules:**
+* 🧩 **Case:** strictly *camelCase* (lowercase with hyphens).
+* ✍️ **Descriptive:** Short and meaningful description.
+
+---
+
+## 📝 Commit Message Guidelines
+We follow the **[Conventional Commits](https://www.conventionalcommits.org/)** specification.
+
+### 🧱 Standard Format
+```text
+<type>(<scope>): <short description>
+>>>>>>> feature/Parte1Hilos
