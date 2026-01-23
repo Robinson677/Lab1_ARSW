@@ -5,10 +5,24 @@
  */
 package edu.eci.arsw.threads;
 
+import java.lang.Thread;
+
+import lombok.AllArgsConstructor;
+
 /**
  *
  * @author hcadavid
  */
-public class CountThread {
-    
+
+@AllArgsConstructor
+public class CountThread extends Thread {
+    private int A;
+    private int B;
+
+    @Override
+    public void run() {
+        java.util.stream.IntStream
+            .rangeClosed(A, B)
+            .forEach(System.out::println);
+    }
 }
