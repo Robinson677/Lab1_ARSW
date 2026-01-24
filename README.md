@@ -11,8 +11,7 @@
 
 ### Descripción
   Este ejercicio contiene una introducción a la programación con hilos en Java, además de la aplicación a un caso concreto.
-  
-=======
+
 ---
 
 ### Descripción
@@ -30,7 +29,6 @@
 2. [Parte II - Ejercicio Black List Search](#-Parte-II-hilos)
 
 ---
->>>>>>> feature/Parte1Hilos
 
 **Parte I - Introducción a Hilos en Java**
 
@@ -41,13 +39,10 @@
 	3. Ejecute y revise la salida por pantalla. 
 	4. Cambie el incio con 'start()' por 'run()'. Cómo cambia la salida?, por qué?.
 
-**Parte II - Ejercicio Black List Search**
 
-=======
 ---
 
 **Parte II - Ejercicio Black List Search**
->>>>>>> feature/Parte1Hilos
 
 Para un software de vigilancia automática de seguridad informática se está desarrollando un componente encargado de validar las direcciones IP en varios miles de listas negras (de host maliciosos) conocidas, y reportar aquellas que existan en al menos cinco de dichas listas. 
 
@@ -80,11 +75,36 @@ Para 'refactorizar' este código, y hacer que explote la capacidad multi-núcleo
 
 1. Cree una clase de tipo Thread que represente el ciclo de vida de un hilo que haga la búsqueda de un segmento del conjunto de servidores disponibles. Agregue a dicha clase un método que permita 'preguntarle' a las instancias del mismo (los hilos) cuantas ocurrencias de servidores maliciosos ha encontrado o encontró.
 
+**Evidencia codigo punto 1**
+
+![](img/Parte2-1.png)
+
+
 2. Agregue al método 'checkHost' un parámetro entero N, correspondiente al número de hilos entre los que se va a realizar la búsqueda (recuerde tener en cuenta si N es par o impar!). Modifique el código de este método para que divida el espacio de búsqueda entre las N partes indicadas, y paralelice la búsqueda a través de N hilos. Haga que dicha función espere hasta que los N hilos terminen de resolver su respectivo sub-problema, agregue las ocurrencias encontradas por cada hilo a la lista que retorna el método, y entonces calcule (sumando el total de ocurrencuas encontradas por cada hilo) si el número de ocurrencias es mayor o igual a _BLACK_LIST_ALARM_COUNT_. Si se da este caso, al final se DEBE reportar el host como confiable o no confiable, y mostrar el listado con los números de las listas negras respectivas. Para lograr este comportamiento de 'espera' revise el método [join](https://docs.oracle.com/javase/tutorial/essential/concurrency/join.html) del API de concurrencia de Java. Tenga también en cuenta:
 
 	* Dentro del método checkHost Se debe mantener el LOG que informa, antes de retornar el resultado, el número de listas negras revisadas VS. el número de listas negras total (línea 60). Se debe garantizar que dicha información sea verídica bajo el nuevo esquema de procesamiento en paralelo planteado.
 
 	* Se sabe que el HOST 202.24.34.55 está reportado en listas negras de una forma más dispersa, y que el host 212.24.24.55 NO está en ninguna lista negra.
+
+
+**Resultado Parte 2**
+
+
+- Codigo implementado:
+
+![](img/checkHost.png)
+
+
+![](img/join.png)
+
+
+**Respuesta:**
+
+Se usuarion 8 hilos. Cada hilo revisa un segmento distinto de las listas negras, permitiendo que la búsqueda se ejecute en paralelo y reduciendo el tiempo de ejecución total.
+
+En este caso se probo la ip 200.24.34.55 y se pudo determinar que es peligrosa o no confiable, ya que aparece en al menos 5 listas negras. 
+
+![](img/Resultado-parte2.png)
 
 
 **Parte II.I Para discutir la próxima clase (NO para implementar aún)**
@@ -115,10 +135,6 @@ Con lo anterior, y con los tiempos de ejecución dados, haga una gráfica de tie
 
 3. De acuerdo con lo anterior, si para este problema en lugar de 100 hilos en una sola CPU se pudiera usar 1 hilo en cada una de 100 máquinas hipotéticas, la ley de Amdahls se aplicaría mejor?. Si en lugar de esto se usaran c hilos en 100/c máquinas distribuidas (siendo c es el número de núcleos de dichas máquinas), se mejoraría?. Explique su respuesta.
 
-<<<<<<< HEAD
-
-
-=======
 ---
 
 # 🏷️ Naming Conventions
@@ -143,4 +159,4 @@ We follow the **[Conventional Commits](https://www.conventionalcommits.org/)** s
 ### 🧱 Standard Format
 ```text
 <type>(<scope>): <short description>
->>>>>>> feature/Parte1Hilos
+
