@@ -25,12 +25,14 @@
 ---
 
 ## 📑 Content Table
-1. [Parte I - Introducción a Hilos en Java](#-Parte-I-hilos)
-2. [Parte II - Ejercicio Black List Search](#-Parte-II-hilos)
+1. [Parte I - Introducción a Hilos en Java](#parte-i---introducción-a-hilos-en-java)
+2. [Parte II - Ejercicio Black List Search](#parte-ii---ejercicio-black-list-search)
+3. [Parte III - Evaluación de Desempeño](#parte-iii---evaluación-de-desempeño)
+4. [Parte IV - Análisis y Ley de Amdahl](#parte-iv---análisis-y-ley-de-amdahl)
 
 ---
 
-**Parte I - Introducción a Hilos en Java**
+## Parte I - Introducción a Hilos en Java
 
 1. De acuerdo con lo revisado en las lecturas, complete las clases CountThread, para que las mismas definan el ciclo de vida de un hilo que imprima por pantalla los números entre A y B.
 2. Complete el método __main__ de la clase CountMainThreads para que:
@@ -39,10 +41,13 @@
 	3. Ejecute y revise la salida por pantalla. 
 	4. Cambie el incio con 'start()' por 'run()'. Cómo cambia la salida?, por qué?.
 
-	[Desarrollo de la parte I](./docs/ParteI.pdf)
+**Solución:**
+
+[Ver en PDF el Desarrollo de la parte I](./docs/ParteI.pdf)
+
 ---
 
-**Parte II - Ejercicio Black List Search**
+## Parte II - Ejercicio Black List Search
 
 Para un software de vigilancia automática de seguridad informática se está desarrollando un componente encargado de validar las direcciones IP en varios miles de listas negras (de host maliciosos) conocidas, y reportar aquellas que existan en al menos cinco de dichas listas. 
 
@@ -75,10 +80,6 @@ Para 'refactorizar' este código, y hacer que explote la capacidad multi-núcleo
 
 1. Cree una clase de tipo Thread que represente el ciclo de vida de un hilo que haga la búsqueda de un segmento del conjunto de servidores disponibles. Agregue a dicha clase un método que permita 'preguntarle' a las instancias del mismo (los hilos) cuantas ocurrencias de servidores maliciosos ha encontrado o encontró.
 
-**Evidencia codigo punto 1**
-
-![](img/Parte2-1.png)
-
 
 2. Agregue al método 'checkHost' un parámetro entero N, correspondiente al número de hilos entre los que se va a realizar la búsqueda (recuerde tener en cuenta si N es par o impar!). Modifique el código de este método para que divida el espacio de búsqueda entre las N partes indicadas, y paralelice la búsqueda a través de N hilos. Haga que dicha función espere hasta que los N hilos terminen de resolver su respectivo sub-problema, agregue las ocurrencias encontradas por cada hilo a la lista que retorna el método, y entonces calcule (sumando el total de ocurrencuas encontradas por cada hilo) si el número de ocurrencias es mayor o igual a _BLACK_LIST_ALARM_COUNT_. Si se da este caso, al final se DEBE reportar el host como confiable o no confiable, y mostrar el listado con los números de las listas negras respectivas. Para lograr este comportamiento de 'espera' revise el método [join](https://docs.oracle.com/javase/tutorial/essential/concurrency/join.html) del API de concurrencia de Java. Tenga también en cuenta:
 
@@ -87,31 +88,16 @@ Para 'refactorizar' este código, y hacer que explote la capacidad multi-núcleo
 	* Se sabe que el HOST 202.24.34.55 está reportado en listas negras de una forma más dispersa, y que el host 212.24.24.55 NO está en ninguna lista negra.
 
 
-**Resultado Parte 2**
+**Solución:**
 
-
-- Codigo implementado:
-
-![](img/checkHost.png)
-
-
-![](img/join.png)
-
-
-**Respuesta:**
-
-Se usuarion 8 hilos. Cada hilo revisa un segmento distinto de las listas negras, permitiendo que la búsqueda se ejecute en paralelo y reduciendo el tiempo de ejecución total.
-
-En este caso se probo la ip 200.24.34.55 y se pudo determinar que es peligrosa o no confiable, ya que aparece en al menos 5 listas negras. 
-
-![](img/Resultado-parte2.png)
+[Ver en PDF el Desarrollo de la parte II](./docs/Partell.pdf)
 
 
 **Parte II.I Para discutir la próxima clase (NO para implementar aún)**
 
 La estrategia de paralelismo antes implementada es ineficiente en ciertos casos, pues la búsqueda se sigue realizando aún cuando los N hilos (en su conjunto) ya hayan encontrado el número mínimo de ocurrencias requeridas para reportar al servidor como malicioso. Cómo se podría modificar la implementación para minimizar el número de consultas en estos casos?, qué elemento nuevo traería esto al problema?
 
-**Parte III - Evaluación de Desempeño**
+## Parte III - Evaluación de Desempeño
 
 A partir de lo anterior, implemente la siguiente secuencia de experimentos para realizar las validación de direcciones IP dispersas (por ejemplo 202.24.34.55), tomando los tiempos de ejecución de los mismos (asegúrese de hacerlos en la misma máquina):
 
@@ -125,7 +111,7 @@ Al iniciar el programa ejecute el monitor jVisualVM, y a medida que corran las p
 
 Con lo anterior, y con los tiempos de ejecución dados, haga una gráfica de tiempo de solución vs. número de hilos. Analice y plantee hipótesis con su compañero para las siguientes preguntas (puede tener en cuenta lo reportado por jVisualVM):
 
-**Parte IV - Ejercicio Black List Search**
+## Parte IV - Análisis y Ley de Amdahl
 
 1. Según la [ley de Amdahls](https://www.pugetsystems.com/labs/articles/Estimating-CPU-Performance-using-Amdahls-Law-619/#WhatisAmdahlsLaw?):
 
