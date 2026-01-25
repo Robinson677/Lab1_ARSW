@@ -7,7 +7,6 @@ package edu.eci.arsw.threads;
 
 /**
  *
- * @author hcadavid
  */
 public class CountThreadsMain {
     
@@ -16,9 +15,9 @@ public class CountThreadsMain {
         CountThread thread2 = new CountThread(99, 199);
         CountThread thread3 = new CountThread(200,299);
 
-        thread1.start();
-        thread2.start();
-        thread3.start();
+        thread1.run();
+        thread2.run();
+        thread3.run();
     
     }
     
