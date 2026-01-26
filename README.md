@@ -112,6 +112,7 @@ Al iniciar el programa ejecute el monitor jVisualVM, y a medida que corran las p
 Con lo anterior, y con los tiempos de ejecución dados, haga una gráfica de tiempo de solución vs. número de hilos. Analice y plantee hipótesis con su compañero para las siguientes preguntas (puede tener en cuenta lo reportado por jVisualVM):
 
 **Solución**
+
 [Ver en PDF el Desarrollo de la parte III](./docs/ParteIII.pdf)
 
 ## Parte IV - Análisis y Ley de Amdahl
@@ -123,6 +124,10 @@ Con lo anterior, y con los tiempos de ejecución dados, haga una gráfica de tie
 2. Cómo se comporta la solución usando tantos hilos de procesamiento como núcleos comparado con el resultado de usar el doble de éste?.
 
 3. De acuerdo con lo anterior, si para este problema en lugar de 100 hilos en una sola CPU se pudiera usar 1 hilo en cada una de 100 máquinas hipotéticas, la ley de Amdahls se aplicaría mejor?. Si en lugar de esto se usaran c hilos en 100/c máquinas distribuidas (siendo c es el número de núcleos de dichas máquinas), se mejoraría?. Explique su respuesta.
+
+**Solución**
+
+[Ver en PDF el Desarrollo de la parte IV](./docs/ParteIV.pdf)
 
 ---
 
