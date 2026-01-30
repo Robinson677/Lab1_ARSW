@@ -8,6 +8,7 @@ package edu.eci.arsw.blacklistvalidator;
 import edu.eci.arsw.spamkeywordsdatasource.HostBlacklistsDataSourceFacade;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -41,7 +42,13 @@ public class HostBlackListsValidator {
         int checkedListsCount=0;
 
         int totalServers = skds.getRegisteredServersCount();
+
+        if (N <= 0) N = 1;
+        if (N > totalServers) N = totalServers;
+
         int segmentSize = totalServers / N;
+
+        AtomicInteger foundReports = new AtomicInteger(0);
 
         List<BlackListSearchThread> threads = new LinkedList<>();
         
@@ -51,7 +58,7 @@ public class HostBlackListsValidator {
                     ? totalServers
                     : start + segmentSize;
 
-            threads.add(new BlackListSearchThread(start, end, ipaddress));
+            threads.add(new BlackListSearchThread(start, end, ipaddress, foundReports, BLACK_LIST_ALARM_COUNT));
         }
         
         for (BlackListSearchThread thread : threads) {
@@ -81,6 +88,9 @@ public class HostBlackListsValidator {
         LOG.log(Level.INFO,
                 "Checked Black Lists:{0} of {1}",
                 new Object[]{checkedListsCount, totalServers});
+
+        LOG.log(Level.INFO,
+             "Found reports total: {0}", foundReports.get());
 
         return blackListOcurrences;
     }
